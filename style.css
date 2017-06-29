@@ -1,0 +1,83 @@
+html, body {
+  height: 100%; }
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url(imgs/jeremy-ricketts-9573.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+
+.header-small {
+  margin-bottom: 20px; }
+  .header-small header h3 {
+    position: relative;
+    font-size: 20px;
+    margin-left: 10px;
+    font-family: 'Roboto Slab', serif; }
+    .header-small header h3 span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 30%;
+      border-bottom: 1px solid white; }
+
+.header-big header h1 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 50px;
+  letter-spacing: 5px;
+  color: black; }
+
+.current-weather {
+  position: relative;
+  width: 50%;
+  border-right: 1px solid #f3f2f2; }
+  .current-weather header h1 {
+    font-size: 30px;
+    font-family: "Raleway", sans-serif;
+    text-align: center; }
+  .current-weather__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .current-weather__wrapper__temperature {
+      height: 375px;
+      width: 375px;
+      margin-bottom: 50px;
+      border-radius: 50%;
+      background-color: rgba(134, 121, 121, 0.7);
+      line-height: 375px;
+      text-align: center; }
+      .current-weather__wrapper__temperature p {
+        display: inline-block;
+        color: #f3f2f2;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        font-size: 185px;
+        font-family: 'Roboto Condensed', sans-serif; }
+        .current-weather__wrapper__temperature p span {
+          position: absolute;
+          right: -35px;
+          top: -50px;
+          font-size: 50px; }
+    .current-weather__wrapper__details {
+      width: 80%;
+      background-color: rgba(243, 242, 242, 0.7);
+      padding: 4px;
+      color: black;
+      border-radius: 15px; }
+      .current-weather__wrapper__details ul {
+        display: flex;
+        justify-content: space-around;
+        list-style-type: none; }
+        .current-weather__wrapper__details ul .icon {
+          height: 30px;
+          width: 30px;
+          margin-right: 5px; }
+
+/*# sourceMappingURL=style.css.map */
