@@ -12,21 +12,31 @@
 <body>
 	<section class="header-small">
 		<header>
-			<h3>Weather App<span></span></h3>
+			<h3>Krakow<span></span></h3>
 		</header>
 	</section>
-	<section class="header-big">
-		<header>
-			<h1>Krakow</h1>
-		</header>
+	<section class="button">
+		<button>Switch to &#x2103</button>
 	</section>
+	
 	<section class="current-weather">
 		<header>
 			<h1>Current Weather</h1>
 		</header>
 		<div class="current-weather__wrapper">
+			<div class="current-weather__wrapper__sun">
+				<div class="current-weather__wrapper__sun__sunrise">
+					<div><img src="imgs/002-contrast.png" alt="sunrise"></div>
+					<p>6:35</p>
+				</div>
+				<div class="current-weather__wrapper__sun__middle"></div>
+				<div class="current-weather__wrapper__sun__sunset">
+					<div><img src="imgs/001-moon.png" alt="sunset"></div>
+					<p>21:05</p>
+				</div>
+			</div>
 			<div class="current-weather__wrapper__temperature">
-				<p>20<span>&#x2103</span></p>			
+				<p>203<span>&#x2103</span></p>			
 			</div>
 			<div class="current-weather__wrapper__details">
 				<ul>
@@ -37,12 +47,58 @@
 				</ul>
 			</div>
 		</div>
-		
+		<div class="current-weather__thermometer">
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+			<div class="current-weather__thermometer__line"></div>
+		</div>
 	</section>
 	<section class="forecast">
-		
-	</section>
 
+		<header>
+			<h1>Forecast</h1>
+		</header>
+		<div class="forecast__table">
+			<ul>
+				<li><div>Monday</div>
+					<ul>
+						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
+					</ul>
+				</li>
+				<li><div>Tuesday</div>
+					<ul>
+						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
+					</ul>
+				</li>
+				<li><div>Wednesday</div>
+					<ul>
+						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
+					</ul>
+				</li>
+				<li><div>Thursday</div>
+					<ul>
+						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
+						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
+					</ul>
+				</li>
+
+			</ul>
+		</div>
+	</section>
 <script src="main.js"></script>
 </body>
 </html>
