@@ -12,13 +12,9 @@
 <body>
 	<section class="header-small">
 		<header>
-			<h3>Krakow<span></span></h3>
+			<h3 id = 'location'></h3>
 		</header>
-	</section>
-	<section class="button">
-		<button>Switch to &#x2103</button>
-	</section>
-	
+	</section>	
 	<section class="current-weather">
 		<header>
 			<h1>Current Weather</h1>
@@ -27,23 +23,23 @@
 			<div class="current-weather__wrapper__sun">
 				<div class="current-weather__wrapper__sun__sunrise">
 					<div><img src="imgs/002-contrast.png" alt="sunrise"></div>
-					<p>6:35</p>
+					<p id = 'sunrise'></p>
 				</div>
 				<div class="current-weather__wrapper__sun__middle"></div>
 				<div class="current-weather__wrapper__sun__sunset">
 					<div><img src="imgs/001-moon.png" alt="sunset"></div>
-					<p>21:05</p>
+					<p id = 'sunset'></p>
 				</div>
 			</div>
 			<div class="current-weather__wrapper__temperature">
-				<p>203<span>&#x2103</span></p>			
+				<p id = 'currentTemp'></p>			
 			</div>
 			<div class="current-weather__wrapper__details">
 				<ul>
-					<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
-					<li><img src="imgs/001-sky.png" alt="wind icon" class="icon"></li>
-					<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
-					<li><img src="imgs/004-meter.png" alt="pressure icon" class="icon"></li>
+					<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"><span id = 'current-rain'></span></li>
+					<li><img src="imgs/001-sky.png" alt="wind icon" class="icon"><span id = 'current-wind'></span></li>
+					<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"><span id = 'current-clouds'></span></li>
+					<li><img src="imgs/004-meter.png" alt="pressure icon" class="icon"><span id="current-pressure"></span></li>
 				</ul>
 			</div>
 		</div>
@@ -60,46 +56,19 @@
 			<div class="current-weather__thermometer__line"></div>
 		</div>
 	</section>
+	<button id = "toggleUnits" onclick="weatherAppLogic.toggleUnits()">Switch to imperial</button>
 	<section class="forecast">
 
 		<header>
 			<h1>Forecast</h1>
 		</header>
-		<div class="forecast__table">
-			<ul>
-				<li><div>Monday</div>
-					<ul>
-						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
-					</ul>
-				</li>
-				<li><div>Tuesday</div>
-					<ul>
-						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
-					</ul>
-				</li>
-				<li><div>Wednesday</div>
-					<ul>
-						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
-					</ul>
-				</li>
-				<li><div>Thursday</div>
-					<ul>
-						<li><img src="imgs/thermometer.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/003-raindrops-falling-of-a-black-cloud.png" alt="rain icon" class="icon"></li>
-						<li><img src="imgs/002-cloudy.png" alt="clouds icon" class="icon"></li>
-					</ul>
-				</li>
-
+		<div class = forecast__table>
+			<ul id="table">
+				
 			</ul>
 		</div>
 	</section>
-<script src="main.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
 

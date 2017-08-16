@@ -8,19 +8,41 @@ html,body{
 	box-sizing: border-box;
 	background-image: url(imgs/jeremy-ricketts-9573.jpg);
 	background-repeat: no-repeat;
-	background-size: cover;
 	background-position: fixed;     
 	
 }
 .clearfix{
 	clear: both;
 }
-.button{
-	button{
+
+	
+
+.header-small{   
+	margin-bottom: 50px;	
+	header{         
+		h3{
+			position: relative;             
+			font-size: 28px;             
+			margin: 0 0 0 10px;         
+			font-family: 'Roboto Slab', serif;  
+			letter-spacing: 6px;           
+			color: #1a0000;
+			span{
+				position: absolute;                 
+				top: 0;                 
+				left: 0;
+				height: 100%;                 
+				width: 30%;                 
+				border-bottom: 1px solid #f3f2f2;             
+			}         
+		}     
+	} 
+} 
+#toggleUnits{
 		font-size: 14px;
 		font-family: "Raleway", sans-serif;
 		font-weight: 700;
-		top: 60px;
+		top: 40px;
 		left: 50%;
 		-webkit-transform: translateX(-50%);
 		-ms-transform: translateX(-50%);
@@ -61,28 +83,6 @@ html,body{
 		    }
 		  }	
 	}
-}
-.header-small{   
-	margin-bottom: 50px;	
-	header{         
-		h3{
-			position: relative;             
-			font-size: 28px;             
-			margin: 0 0 0 10px;         
-			font-family: 'Roboto Slab', serif;  
-			letter-spacing: 6px;           
-			color: #1a0000;
-			span{
-				position: absolute;                 
-				top: 0;                 
-				left: 0;
-				height: 100%;                 
-				width: 30%;                 
-				border-bottom: 1px solid #f3f2f2;             
-			}         
-		}     
-	} 
-} 
 
 .current-weather{
 	position: relative;
@@ -124,7 +124,6 @@ html,body{
 				width: 15px;
 			}
 		}
-
 	}
 	&__wrapper{
 		display: flex;
@@ -146,13 +145,13 @@ html,body{
 				position: relative;
 				margin: 0;
 				padding: 0;
-				font-size: 120px;
+				font-size: 170px;
 				font-family: 'Roboto Condensed', sans-serif;
 			
 				span{
 					position: absolute;
 					right: -35px;
-					top: -50px;
+					top: -65px;
 					font-size: 50px;
 				}
 			}
@@ -169,10 +168,13 @@ html,body{
 				display: flex;
 				justify-content: space-around;
 				list-style-type: none;
+				font-family: 'Roboto Condensed', sans-serif;
+				font-size: 20px;
+				font-weight: 700;
 				.icon{
 					height: 30px;
 					width: 30px;
-					margin-right: 5px;
+					margin-right: 10px;
 				}
 			}
 		}
@@ -241,51 +243,211 @@ html,body{
 			color: #1a0000;
 		}
 	}
+
 	&__table{
 		background-color: rgba(243, 242, 242,0.7);
 		padding: 4px;
+		padding-left: 0;
 		border-radius: 15px;
 		color: black;
-		ul{
-			list-style-type: none;
-			li{
-
-				font-family: "Raleway", sans-serif;
-				border-bottom: 1px white solid;
-				div{
-					display: inline-block;
-					padding: 8px;
-					font-weight: 700;
-					background-color: #666666;
-					border-radius: 15px;
-					color: #f3f2f2;	
-					text-transform: uppercase;
-					margin-top: 3px;
-					border: 2px solid #f2f2f2;	
-
+		
+			ul{
+				li:nth-last-child(1){
+					border: none;
 				}
-				ul{
-					width: 80%;
-					margin: 0 auto;
-					margin-bottom: 15px;	
+				list-style-type: none;
+				li{
+					position: relative;
 					display: flex;
 					justify-content: space-around;
-					list-style-type: none;
-					li{
-						border-bottom: none;
-						img{
+					border-bottom: 2px solid #f3f2f2;
+					margin-top: 30px;
+					padding-bottom: 10px;
+					padding-left: 10%;
+					transition: 0.4s;
+
+					.forecast-day{
+						display: inline-block;
+						font-size: 18px;
+						font-family: 'Roboto Condensed', sans-serif;
+						line-height: 25px;
+						.icon{
 							height: 25px;
 							width: 25px;
-							margin-right: 5px;
+							margin-right: 8px;
 						}
 					}
+
+					.day{
+						display: inline-block;
+						position: absolute;
+						left: -30px;
+						top: -30px;
+						padding: 8px;
+						font-family: "Raleway", sans-serif;
+						font-size: 15px;
+						font-weight: 700;
+						background-color: #666666;
+						border-radius: 15px;
+						color: #f3f2f2;	
+						text-transform: uppercase;
+						margin-top: 3px;
+						border: 2px solid #f2f2f2;	
+						transition: 0.4s;
+
+					}
+
+					&:hover{
+						border-bottom: 1px solid #666666;
+						.day{
+							background-color: green;
+						}
+						// &:nth-last-child(1){
+						// 	border: none;
+						// }
+					}
+
 				}
-				&:nth-last-child(1){
-				border: none;
 			}
+	}
+}
+@media screen and (max-width: 1300px){	
+	.current-weather{
+		&__wrapper{
+			&__details{
+				ul{
+					font-size: 14px;
+				}
+			}
+			&__temperature{
+				height: 250px;
+				width: 250px;
+				line-height: 250px;
+				p{
+					font-size: 120px;
+					span{
+						top: -50px;
+					}
+				}
+			}
+		}
+	}
+	#table{
+		li{
+			padding-left: 15%;
+			.day{
+				left: -30px;
+				font-size: 14px;
+				
+			}
+		}
+		
+	}
+	
+	
+}
+@media screen and (max-width: 1000px) and (min-width: 601px){
+	.current-weather{
+		&__thermometer{
+				display: none;
+		}
+		width: 100%;
+		&__wrapper{
+			&__temperature{
+				p{
+					span{
+						top: -50px;
+					}
+				}
 			}
 			
 		}
+	}
+	.forecast{
+		width: 100%;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		&__table{
+			width: 80%;
+		}
 
+	}
+	#toggleUnits{
+		top: 30px;
+		left: 93%;
+		height: 75px;
+		width: 75px;
+		font-size: 12px;
+		position: fixed;
+	}
+	.header-small{   
+		margin-bottom: 50px;	
+		header{         
+			h3{
+				font-size: 30px;
+				span{           
+					width: 60%;                           
+				}         
+			}     
+		} 
+	}
+}
+
+@media screen and(max-width: 600px) and (min-width: 460px){
+	.current-weather{
+		width: 100%;
+		&__thermometer{
+						display: none;
+		}
+
+		&__wrapper{
+			&__temperature{
+				height: 200px;
+				width: 200px;
+				line-height: 200px;
+				p{
+					font-size: 90px;
+					span{
+						top: -35px;
+						font-size: 40px;
+					}
+				}
+			}
+			
+		}
+	}
+	.forecast{
+		width: 100%;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		&__table{
+			width: 80%;
+		}
+
+	}
+	#toggleUnits{
+		top: 30px;
+		left: 93%;
+		height: 75px;
+		width: 75px;
+		font-size: 12px;
+		position: fixed;
+	}
+	.header-small{   
+		margin-bottom: 25px;	
+		header{         
+			h3{
+				font-size: 30px;
+				span{           
+					width: 60%;                           
+				}         
+			}     
+		} 
 	}
 }
