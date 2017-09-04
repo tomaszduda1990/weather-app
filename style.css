@@ -6,12 +6,46 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-image: url(imgs/jeremy-ricketts-9573.jpg);
   background-repeat: no-repeat;
-  background-position: fixed; }
+  background-attachment: fixed;
+  background-position: center; }
 
 .clearfix {
   clear: both; }
+
+.hide {
+  opacity: 0; }
+
+.pre-loader {
+  transition: 0.8s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  background-color: #cccc00;
+  height: 100vh;
+  width: 100vw;
+  text-align: center; }
+  .pre-loader h1 {
+    margin: 100px 0 100px 0;
+    font-size: 40px;
+    font-family: 'Roboto Slab', serif; }
+  .pre-loader button {
+    animation: pulse infinite 2s;
+    border-radius: 50%;
+    border: 1px white solid;
+    display: inline-block;
+    position: relative;
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    height: 200px;
+    width: 200px;
+    color: #666666;
+    background-color: #f3f2f2;
+    outline: none; }
+    .pre-loader button:hover {
+      cursor: pointer; }
 
 .header-small {
   margin-bottom: 50px; }
@@ -261,6 +295,9 @@ html, body {
       left: -30px;
       font-size: 14px; } }
 @media screen and (max-width: 1000px) and (min-width: 601px) {
+  body {
+    background-attachment: fixed; }
+
   .current-weather {
     width: 100%; }
     .current-weather__thermometer {
@@ -293,6 +330,16 @@ html, body {
       .header-small header h3 span {
         width: 60%; } }
 @media screen and (max-width: 600px) and (min-width: 460px) {
+  body {
+    background-attachment: fixed; }
+
+  .pre-loader h1 {
+    font-size: 30px; }
+  .pre-loader button {
+    height: 150px;
+    width: 150px;
+    font-size: 15px; }
+
   .current-weather {
     width: 100%; }
     .current-weather__thermometer {
@@ -331,5 +378,83 @@ html, body {
       font-size: 30px; }
       .header-small header h3 span {
         width: 60%; } }
+@media screen and (max-width: 459px) {
+  body {
+    background-attachment: fixed; }
+
+  .pre-loader h1 {
+    font-size: 30px; }
+  .pre-loader button {
+    height: 150px;
+    width: 150px;
+    font-size: 15px; }
+
+  .current-weather {
+    width: 100%; }
+    .current-weather__thermometer {
+      display: none; }
+    .current-weather__wrapper__details {
+      width: 95%; }
+      .current-weather__wrapper__details ul {
+        font-size: 12px;
+        padding: 0; }
+        .current-weather__wrapper__details ul li .icon {
+          height: 26px;
+          width: 26px; }
+    .current-weather__wrapper__temperature {
+      height: 200px;
+      width: 200px;
+      line-height: 200px; }
+      .current-weather__wrapper__temperature p {
+        font-size: 90px; }
+        .current-weather__wrapper__temperature p span {
+          top: -35px;
+          font-size: 40px; }
+
+  .forecast {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .forecast__table {
+      width: 90%;
+      padding: 0; }
+      .forecast__table #table {
+        padding-left: 12px; }
+        .forecast__table #table li {
+          padding: 0; }
+          .forecast__table #table li .day {
+            left: 0;
+            font-size: 12px; }
+          .forecast__table #table li .forecast-day {
+            margin-top: 12px;
+            font-size: 10px; }
+            .forecast__table #table li .forecast-day .icon {
+              height: 20px;
+              width: 20px; }
+
+  #toggleUnits {
+    top: 30px;
+    left: 90%;
+    height: 50px;
+    width: 50px;
+    font-size: 8px;
+    position: fixed; }
+
+  .header-small {
+    margin-bottom: 25px; }
+    .header-small header h3 {
+      font-size: 30px; }
+      .header-small header h3 span {
+        width: 60%; } }
+@keyframes pulse {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.05); }
+  100% {
+    transform: scale(1); } }
 
 /*# sourceMappingURL=style.css.map */

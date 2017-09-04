@@ -30,9 +30,9 @@
 			connectForecast.onload = function(){
 				var dataForecast = JSON.parse(connectForecast.responseText);
 				//what we see -------------------------------------
-				// console.log(dataForecast);
-				// var array = weatherAppLogic.forecastArray(dataForecast);
 				weatherAppUpdate.updateFieldsForecast(dataForecast);
+				
+
 				
 			};
 			connectForecast.send();
@@ -46,9 +46,19 @@
 			var rain = document.getElementById('current-rain');
 			var pressure = document.getElementById('current-pressure');
 			var clouds = document.getElementById('current-clouds');
+			var preLoader = document.getElementById("hide");
+			var weatherCode = data.weather[0].icon.slice(0,2);
 
-			
-			
+			preLoader.addEventListener("click", function(){
+				var preLoaderScreen = document.querySelector('.pre-loader');
+				preLoaderScreen.className += " hide";
+				setTimeout(function(){
+					preLoaderScreen.style.display = "none";
+					
+				}, 1000);
+			});
+			weatherAppLogic.setBackground(weatherCode, data.main.temp);
+
 			weatherAppLogic.convertUnitsTemp(weatherApp.metric, data.main.temp);
 			weatherAppLogic.convertUnitsWind(weatherApp.metric, data.wind.speed);
 			weatherAppLogic.convertTime(data);
@@ -72,23 +82,30 @@
 		updateFieldsForecast: function(data){
 			var array = weatherAppLogic.forecastArray(data);
 			var table = document.getElementById('table');
-			
-			//figure out how to display all forecast on screen !=================================================s
 			table.innerHTML = "";
-			
 			for(var i = 0; i<array.length; i++){
 				table.appendChild(weatherAppLogic.updateForecastCondition(array[i]));
-			};
-
-			
+			};			
 		},
-		
-		
-		
-		
 	};
+
 	weatherAppLogic = {
-		
+		setBackground: function(weatherCode, temp){
+			var body = document.querySelector("body");
+			if(temp >= 296 && (weatherCode == "01" || weatherCode == "02")){
+				body.style.backgroundImage = "url('imgs/jeremy-ricketts-9573.jpg')";
+			}else if((temp < 296 && temp >= 279) && (weatherCode == "01" || weatherCode == "02")){
+				body.style.backgroundImage = "url('imgs/autumn.jpg')";
+			}else if(temp>=279 && (weatherCode == "03" || weatherCode == "04")){
+				body.style.backgroundImage = "url('imgs/clouds-autumn.jpg')";
+			}else if(temp<279){
+				body.style.backgroundImage = "url('imgs/cold.jpg')";
+			}else if(weatherCode == "09" || weatherCode == "10" || weatherCode == "11"){
+				body.style.backgroundImage = "url('imgs/rain.jpg')";
+			}else{
+				body.style.backgroundImage = "url('imgs/random.jpg')";
+			}
+		},
 		toggleUnits: function(){
 			weatherApp.metric = !weatherApp.metric;
 			var buttonText = document.getElementById('toggleUnits');
@@ -102,15 +119,12 @@
 		updateForecastCondition: function(data){
 			var createLi = document.createElement('li');
 			var temp = Math.round(this.returnTemp(weatherApp.metric, data.temperature));
-
 			var rain;
-
 			function isEmpty(obj) {
 			    for(var prop in obj) {
 			        if(obj.hasOwnProperty(prop))
-			            return false;
+			        return false;
 			    }
-
 			    return true;
 			}
 			if(data.rain === undefined){
@@ -120,32 +134,26 @@
 			}else{
 				rain = Math.round(data.rain['3h']*100)/100;
 			}
-
-
 			var pressure = Math.round(data.pressure);
 			var units;
 			if(weatherApp.metric === true){
 				units = " &#x2103";
 			}else units = " &#x2109";
-
 			createLi.innerHTML += "<div class = \"day\">" +data.weekDay+"</div>";
 			createLi.innerHTML += "<div class = \" forecast-day\"><img src=\"imgs/thermometer.png\" alt=\"temp icon\" class=\"icon\">"+temp + units+"</div>";
 			createLi.innerHTML += "<div class = \" forecast-day\"><img src=\"imgs/003-raindrops-falling-of-a-black-cloud.png\" alt=\"temp icon\" class=\"icon\">"+rain + " mm</div>";
 			createLi.innerHTML += "<div class = \" forecast-day\"><img src=\"imgs/004-meter.png\" alt=\"temp icon\" class=\"icon\">"+pressure + " hPa</div>";
-
 			return createLi;
 		},
 		convertUnitsTemp: function(metric, temp){
 			var currentTemp = document.getElementById('currentTemp');
 			var tempValue = temp;
 			currentTemp.innerHTML = "";
-			// converts temperature
 			if(metric === true){
 				tempValue -= 273.15;
 				currentTemp.textContent = tempValue;
 				currentTemp.innerHTML += "<span>&#x2103</span>";
-			}else{
-				
+			}else{				
 				tempValue = tempValue*1.8-459.67;
 				tempValue = Math.round(tempValue);
 				currentTemp.textContent = tempValue;
@@ -175,8 +183,6 @@
 				windValue = Math.round(10*wind*2.2369)/10;
 				windText.textContent = windValue + " mil/h";
 			}
-			
-
 		},
 		convertTime: function(time){
 			var sun = [];
@@ -184,10 +190,8 @@
 			var sunset = document.getElementById('sunset');
 			var hour;
 			var minutes;
-
 			sun[0] = new Date(time.sys.sunrise*1000);
-			sun[1] = new Date(time.sys.sunset*1000)
-			
+			sun[1] = new Date(time.sys.sunset*1000)			
 			for(var i = 0; i<sun.length; i++){
 				hour = sun[i].getHours().toString();
 				minutes = sun[i].getMinutes().toString();
@@ -200,9 +204,7 @@
 					sunrise.textContent = hour + ":" + minutes;
 				}else{
 					sunset.textContent = hour + ":" + minutes;
-				}
-
-			
+				}			
 			}
 		},
 		forecastArray: function(arr){
@@ -212,15 +214,12 @@
 				var date = {};
 				var arrRange = [];
 				var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
-
-				for(var i = 0; i<arr.list.length; i++){
-					
+				for(var i = 0; i<arr.list.length; i++){					
 					time = arr.list[i].dt;
 					var checkTime = new Date(time*1000);
 					date.time = checkTime.getHours();
 					date.date = checkTime.getDate();
-					date.weekDay = days[checkTime.getDay()];
-				
+					date.weekDay = days[checkTime.getDay()];				
 					if(date.time>12 && date.time<18){
 						arrRange.push(
 							{
@@ -230,12 +229,9 @@
 								rain: arr.list[i].rain,
 								pressure: arr.list[i].main.pressure,
 							}
-
-						);
-						
+						);						
 					}
-				}	
-				
+				}
 				var arr_return = [];
 				arr_return.push(arrRange[0]);
 				for(var i = 1; i<arrRange.length; i++){
@@ -245,9 +241,6 @@
 				}
 				return arr_return;
 		},
-
-
-
 	};
 
 
