@@ -15,7 +15,7 @@
 		// connectCurrent APi data
 		getWeather: function(lon, lat, key){
 			var connectCurrent = new XMLHttpRequest();
-			connectCurrent.open("GET", "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID="+key);
+			connectCurrent.open("GET", "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&APPID="+key);
 			connectCurrent.onload = function(){
 				var dataCurrent = JSON.parse(connectCurrent.responseText);
 				//what we see -------------------------------------
@@ -26,7 +26,7 @@
 			
 		//connectFOrecast API data
 			var connectForecast = new XMLHttpRequest();
-			connectForecast.open("GET", "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&APPID="+key);
+			connectForecast.open("GET", "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&APPID="+key);
 			connectForecast.onload = function(){
 				var dataForecast = JSON.parse(connectForecast.responseText);
 				//what we see -------------------------------------
